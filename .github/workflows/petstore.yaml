@@ -31,6 +31,15 @@ jobs:
         run: mvn clean install -DuseGitHubPackages=true deploy -P github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+
+
       - name: Build DHIR docker image
         id: build-image
         working-directory: ./petstore
