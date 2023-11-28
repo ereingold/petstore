@@ -27,15 +27,15 @@ jobs:
         run: mvn clean install -DuseGitHubPackages=true deploy -P github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build Petstore docker image
+      - name: Build DHIR docker image
         id: build-image
         working-directory: ./petstore
         run: docker build . -t petstore
-      - name: Tag Petstore docker image
+      - name: Tag DHIR docker image
         working-directory: ./petstore
         run: docker tag petstore ghcr.io/ereingold/petstore
-      - name: Push Petstore docker image
+      - name: Push DHIR docker image
         working-directory: ./petstore
-        run: docker push ghcr.io/ereingold/petstore
+        run: docker push ghcr.io/ereingold
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
