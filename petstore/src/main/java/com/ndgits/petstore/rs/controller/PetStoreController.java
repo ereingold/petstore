@@ -34,8 +34,7 @@ public class PetStoreController {
 	@GetMapping("/{id}")
 	public Pet getPetById(@PathVariable Long id){
 		
-		Pet cat = petRepository.findOne(id.longValue()).orElseThrow(PetNotFoundException::new);
-		return cat;
+		return petRepository.findOne(id.longValue()).orElseThrow(PetNotFoundException::new);
 	}
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -47,7 +46,7 @@ public class PetStoreController {
 	@DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
 		petRepository.findOne(id.longValue()).orElseThrow(PetNotFoundException::new);
-		petRepository.delete(id);
+		petRepository.deleteById(id);
 	}
 	@GetMapping
     public Iterable<Pet> findAll() {

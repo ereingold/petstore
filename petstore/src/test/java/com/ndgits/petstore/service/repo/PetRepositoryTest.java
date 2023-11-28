@@ -37,7 +37,7 @@ public class PetRepositoryTest extends BaseTest {
 		category.setName("Dog");
 		entities.add(category);
 		
-		categoryRepository.save(entities);
+		categoryRepository.saveAll(entities);
 		
 		Iterable<Category> iterable = categoryRepository.findAll();
 		

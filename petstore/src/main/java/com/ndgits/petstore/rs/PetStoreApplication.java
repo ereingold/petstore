@@ -33,7 +33,7 @@ public class PetStoreApplication {
 	@Bean
 	public CommandLineRunner loadData(PetRepository petRepository, CategoryRepository categoryRepository) {
 	    return (args) -> {
-			List<Category> entities = new ArrayList<Category>();
+			List<Category> entities = new ArrayList<>();
 			Category category = new Category();
 			category.setName("Cat");
 			entities.add(category);
@@ -42,7 +42,7 @@ public class PetStoreApplication {
 			category.setName("Dog");
 			entities.add(category);
 			
-			categoryRepository.save(entities);
+			categoryRepository.saveAll(entities);
 			Iterable<Category> iterable = categoryRepository.findAll();
 			
 			List<Category> categories = StreamSupport.stream(iterable.spliterator(), false).filter(c->c.getName().equals("Cat")) .collect(Collectors.toList());

@@ -1,7 +1,6 @@
 package com.ndgits.petstore.rs.controller;
 
-import javax.validation.ConstraintViolationException;
-
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
