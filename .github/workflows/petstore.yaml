@@ -37,16 +37,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-      - name: Build DHIR docker image
-        id: build-image
-        working-directory: ./petstore
-        run: docker build . -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-      - name: Push DHIR docker image
-        working-directory: ./petstore
-        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
+      - name: Build the Petstore Docker image
+        run: | 
+          docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker run ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
