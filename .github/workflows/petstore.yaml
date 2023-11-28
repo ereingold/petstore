@@ -33,7 +33,7 @@ jobs:
         run: docker build . -t petstore
       - name: Tag DHIR docker image
         working-directory: ./petstore
-        run: docker tag petstore ereingold/petstore
+        run: docker tag petstore ghcr.io/ereingold/petstore
       - name: Push DHIR docker image
         working-directory: ./petstore
         run: docker push ghcr.io/ereingold/petstore
