@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 public abstract class BaseM {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String name;
+	protected Long id;
+	protected String name;
 	public Long getId() {
 		return id;
 	}

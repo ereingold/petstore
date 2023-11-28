@@ -6,9 +6,6 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pet extends BaseM {
-
-
-
 	private String description;
 	private String imageURL;
 	private Long categoryId;
@@ -48,5 +45,7 @@ public class Pet extends BaseM {
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
+
+
 	
 }
