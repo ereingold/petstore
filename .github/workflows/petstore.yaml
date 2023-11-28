@@ -1,0 +1,29 @@
+name: Petstore_Pipeline
+
+on:
+  push:
+    branches:    
+      - '*'         
+      - '*/*'       
+      - '**'        
+      - '!dev'   
+      - '!qut'   
+      - '!main'   
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Petstore
+        working-directory: ./petstore
+        run: mvn clean install -DuseGitHubPackages=true deploy -P github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
