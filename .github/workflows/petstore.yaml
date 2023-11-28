@@ -38,8 +38,13 @@ jobs:
       - name: Tag DHIR docker image
         working-directory: ./petstore
         run: docker tag petstore ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: login
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
       - name: Push DHIR docker image
         working-directory: ./petstore
         run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
