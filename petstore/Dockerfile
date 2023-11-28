@@ -2,7 +2,7 @@
 # docker build -t petstore:latest
 # ---------------------------------------------
 # Start with a base image containing Java runtime
-FROM  openjdk:22-jdk-slim
+FROM  openjdk:17-jdk-slim
 
 # 
 RUN mkdir /deployment
