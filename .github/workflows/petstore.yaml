@@ -33,9 +33,9 @@ jobs:
         run: docker build . -t petstore
       - name: Tag DHIR docker image
         working-directory: ./petstore
-        run: docker tag petstore ghcr.io/ereingold
+        run: docker tag petstore ereingold/petstore
       - name: Push DHIR docker image
         working-directory: ./petstore
-        run: docker push ghcr.io/ereingold
+        run: docker push ghcr.io/ereingold/petstore
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
