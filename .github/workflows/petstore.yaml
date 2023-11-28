@@ -34,17 +34,10 @@ jobs:
       - name: Build DHIR docker image
         id: build-image
         working-directory: ./petstore
-        run: docker build . -t petstore
-      - name: Tag DHIR docker image
-        working-directory: ./petstore
-        run: docker tag petstore ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      - name: login
-        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+        run: docker build . -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Push DHIR docker image
         working-directory: ./petstore
-        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
