@@ -38,6 +38,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check Tag
+        run: |
+          echo "The tag for this commit is: ${GITHUB_REF#refs/tags/}"
       - name: Build the Petstore Docker image
         working-directory: ./petstore
         run: | 
